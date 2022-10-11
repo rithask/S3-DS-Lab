@@ -7,6 +7,7 @@ Implement a circular queue using arrays with the operations:
 
 #include <stdio.h>
 
+// Declare global variables
 int front = -1, rear = -1;
 int size;
 int items[100];
@@ -22,32 +23,23 @@ int main(void)
     printf("Enter the size of the array: ");
     scanf("%d", &size);
 
-    dequeue(1);
-    print_queue();
-    
-    enqueue(1);
-    print_queue();
-
-    enqueue(4);
-    print_queue();
-    enqueue(5);
-    print_queue();
-    enqueue(2);
-    print_queue();
 }
 
+// Check if queue is full
 int is_full()
 {
     if ((rear == size - 1 && front == 0) || (rear == front - 1)) return 1;
     return 0;
 }
 
+// Check if queue is empty
 int is_empty()
 {
     if (front == -1) return 1;
     return 0;
 }
 
+// Add element to the queue
 void enqueue(int element)
 {
     if (is_full())
@@ -62,6 +54,7 @@ void enqueue(int element)
     printf("Inserted -> %d\n", element);
 }
 
+// Delete element from the queue
 void dequeue()
 {
     if (is_empty())
@@ -85,6 +78,7 @@ void dequeue()
     printf("Deleted -> %d\n", element);
 }
 
+// Display the queue
 void print_queue()
 {
     int i;
