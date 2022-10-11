@@ -23,6 +23,33 @@ int main(void)
     printf("Enter the size of the array: ");
     scanf("%d", &size);
 
+    // Show a menu till the user exits
+    while(1)
+    {
+        int op, element;
+        printf("\n1. Insert an element\n2. Delete element\n3. Display the queue\n4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &op);
+        switch (op)
+        {
+        case 1:
+            printf("\nEnter the element to be inserted: ");
+            scanf("%d", &element);
+            enqueue(element);
+            break;
+        case 2:
+            dequeue();
+            break;
+        case 3:
+            print_queue();
+            break;
+        case 4:
+            return 0;
+        default:
+            printf("Invalid choice\n");
+            break;
+        }
+    }
 }
 
 // Check if queue is full
