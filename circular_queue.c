@@ -32,22 +32,22 @@ int main(void)
         scanf("%d", &op);
         switch (op)
         {
-        case 1:
-            printf("\nEnter the element to be inserted: ");
-            scanf("%d", &element);
-            enqueue(element);
-            break;
-        case 2:
-            dequeue();
-            break;
-        case 3:
-            print_queue();
-            break;
-        case 4:
-            return 0;
-        default:
-            printf("Invalid choice\n");
-            break;
+            case 1:
+                printf("\nEnter the element to be inserted: ");
+                scanf("%d", &element);
+                enqueue(element);
+                break;
+            case 2:
+                dequeue();
+                break;
+            case 3:
+                print_queue();
+                break;
+            case 4:
+                return 0;
+            default:
+                printf("Invalid choice\n");
+                break;
         }
     }
 }
