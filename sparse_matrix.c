@@ -5,6 +5,42 @@ Also find the transpose of the two matrices represented in tuple form and displa
 Find the sum of the two matrices in tuple form and display the sum in tuple form.
 */  
 
+/*
+ALGORITHM
+1. Start
+2. Read the number of rows and columns of the matrix
+3. Read the elements of the matrix
+    3.1 Iterate through the rows with i
+        3.1.1 Iterate through the columns with j
+            3.1.1.1 Read the element and store it in the matrix[i][j]
+4. Repeat steps 2 and 3 for the second matrix
+5. Display both the matrices
+    4.1 Iterate through the rows with i
+        4.1.1 Iterate through the columns with j
+            4.1.1.1 Display the element at matrix[i][j]
+6. Convert the matrices to tuple form
+    6.1 Initialize the number of non-zero elements to 1
+    6.2 For each element in the matrix
+        6.3.1 If the element is non-zero
+            6.3.1.1 Copy the row number, column number and element to the tuple matrix
+            6.3.1.2 Increment the number of non-zero elements
+    5.4 Store the row number, column number and number of non-zero elements in the first row of the tuple matrix
+7. Display the tuple form of the matrices
+    7.1 Iterate through the rows with i
+        7.1.1 Iterate through the columns with j
+            7.1.1.1 Display the element at tuple_matrix[i][j]
+8. Find the transpose of the matrix
+    8.1 Initialize the number of non-zero elements to 1
+    8.2 For each element in the matrix
+        8.2.1 Read the row number, column number and element from the tuple matrix
+        8.2.2 Copy the column number, row number and element to the transpose matrix
+        8.2.3 Increment the number of non-zero elements
+    8.3 Sort the transpose matrix using bubble sort
+9. Display the transpose of the matrix using the same algorithm as step 7
+10. Find the sum of the two matrices
+11. Display the sum of the two matrices
+12. Stop
+*/
 #include <stdio.h>
 
 void read_matrix(int a[][10], int *m, int *n);
@@ -119,15 +155,12 @@ void to_transpose(int b[][3], int c[][3])
     int x = 1;
 
     // Store the transpose of the tuple in the new tuple
-    for (int i = 0; i < b[0][1]; i++)
+    for (int i = 1; i <= k; i++)
     {
-        for (int j = 1; j <= k; j++)
-        {
-            c[x][0] = b[j][1];
-            c[x][1] = b[j][0];
-            c[x][2] = b[j][2];
-            x++;
-        }
+        c[x][0] = b[i][1];
+        c[x][1] = b[i][0];
+        c[x][2] = b[i][2];
+        x++;
     }
 
     // Sort tuple form using bubble sort algorithm

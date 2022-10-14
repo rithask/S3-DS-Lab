@@ -1,3 +1,47 @@
+/*
+Write a program to read two polynomials and store them in an array.
+Calculate the sum of the two polynomials and
+display the first polynomial, second polynomial and
+the resultant polynomial.
+*/
+
+/*
+ALGORITHM
+1. Start
+2. Define a structure to store the coefficients and the exponent of a term
+3. Read the number of terms in the first polynomial
+4. Read the first polynomial
+    4.1 Iterate through the terms
+        4.1.1 Read the coefficient and exponent of the term
+        4.1.2 Store the coefficient and exponent in the first polynomial
+5. Repeat steps 2 and 3 for the second polynomial
+6. Sort the two polynomials in descending order of the exponents using bubble sort
+7. Display the Polynomials
+    7.1 Iterate through the terms
+        7.1.1 Display the coefficient and exponent of the term
+8. Add the two polynomials
+    8.1 Declare and initialise i, j and k to 0
+    8.2 While i < number of terms in the first polynomial and j < number of terms in the second polynomial
+        8.2.1 If the exponent of the term in the first polynomial > the exponent of the term in the second polynomial
+            8.2.1.1 Copy the coefficient and exponent of the term in the first polynomial to the resultant polynomial
+            8.2.1.2 Increment i and k
+        8.2.2 Else if the exponent of the term in the first polynomial < the exponent of the term in the second polynomial
+            8.2.2.1 Copy the coefficient and exponent of the term in the second polynomial to the resultant polynomial
+            8.2.2.2 Increment j and k
+        8.2.3 Else if the exponent of the term in the first polynomial = the exponent of the term in the second polynomial
+            8.2.3.1 Add the coefficients of the terms in the first and second polynomial
+            8.2.3.2 Copy the coefficient and exponent of the term in the any polynomial to the resultant polynomial
+            8.2.3.3 Increment i, j and k
+    8.3 While i < number of terms in the first polynomial
+        8.3.1 Copy the coefficient and exponent of the term in the first polynomial to the resultant polynomial
+        8.3.2 Increment i and k
+    8.4 While j < number of terms in the second polynomial
+        8.4.1 Copy the coefficient and exponent of the term in the second polynomial to the resultant polynomial
+        8.4.2 Increment j and k
+9. Display the resultant polynomial using the same algorithm as step 7
+10. Stop
+*/
+
 #include <stdio.h>
 
 // Define a structure to store the polynomial
