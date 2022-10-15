@@ -52,36 +52,36 @@ struct Poly
 };
 
 // Function prototypes
-void readPoly(struct Poly *p, int *n);
-void printPoly(struct Poly *p, int n);
-void sortPoly(struct Poly *p, int n);
-int addPoly(struct Poly *p1, struct Poly *p2, struct Poly *res, int n1, int n2);
+void read_poly(struct Poly *p, int *n);
+void print_poly(struct Poly *p, int n);
+void sort_poly(struct Poly *p, int n);
+int add_poly(struct Poly *p1, struct Poly *p2, struct Poly *res, int n1, int n2);
 
 int main(void)
 {
     struct Poly p1[10], p2[10], res[20];
     int n1, n2, n3;
 
-    readPoly(p1, &n1);
-    readPoly(p2, &n2);
+    read_poly(p1, &n1);
+    read_poly(p2, &n2);
 
-    sortPoly(p1, n1);
-    sortPoly(p2, n2);
+    sort_poly(p1, n1);
+    sort_poly(p2, n2);
 
-    printf("Polynomial 1: ");
-    printPoly(p1, n1);
+    printf("\nPolynomial 1: ");
+    print_poly(p1, n1);
     printf("Polynomial 2: ");
-    printPoly(p2, n2);
+    print_poly(p2, n2);
 
-    n3 = addPoly(p1, p2, res, n1, n2);
+    n3 = add_poly(p1, p2, res, n1, n2);
     printf("Resultant polynomial: ");
-    printPoly(res, n3);
+    print_poly(res, n3);
     
     return 0;
 }
 
 // Read polynomials
-void readPoly(struct Poly *p, int *n)
+void read_poly(struct Poly *p, int *n)
 {
     printf("\nEnter the number of terms: ");
     scanf("%d", n);
@@ -95,13 +95,15 @@ void readPoly(struct Poly *p, int *n)
 }
 
 // Print polynomial
-void printPoly(struct Poly *p, int n)
+void print_poly(struct Poly *p, int n)
 {
     for (int i = 0; i < n; i++)
     {
+        if (p[i].c == 0)
+            continue;
         if (p[i].e == 0)
         {
-            printf("%d\n", p[i].c);
+            printf("%d", p[i].c);
         }
         else
         {
@@ -116,7 +118,7 @@ void printPoly(struct Poly *p, int n)
 }
 
 // Sort polynomial in descending order
-void sortPoly(struct Poly *p, int n)
+void sort_poly(struct Poly *p, int n)
 {
     for (int i = 0; i < n - 1; i++)
     {
@@ -133,7 +135,7 @@ void sortPoly(struct Poly *p, int n)
 }
 
 // Add two polynomials and return the number of terms in the resultant polynomial
-int addPoly(struct Poly *p1, struct Poly *p2, struct Poly *res, int n1, int n2)
+int add_poly(struct Poly *p1, struct Poly *p2, struct Poly *res, int n1, int n2)
 {
     int i = 0, j = 0, k = 0;
     while (i < n1 && j < n2)
