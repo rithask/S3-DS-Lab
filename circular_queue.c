@@ -5,6 +5,43 @@ Implement a circular queue using arrays with the operations:
     3.Display the contents of the queue after each operation.
 */
 
+/*
+ALGORITHM
+1. Start
+2. Declare and initialise the front and rear to -1 globally
+3. Declare the array globally
+4. Define the function enqueue()
+    4.1 If the queue is full, display Queue is full
+    4.2 Else
+        4.2.1 If the queue is empty, increment front and rear by 1
+        4.2.2 Else, increment rear by 1
+        4.2.3 Insert the element at the rear
+5. Define the function dequeue()
+    5.1 If the queue is empty, display Queue is empty
+    5.2 Else
+        5.2.1 If front and rear are equal, set front and rear to -1
+        5.2.2 Else, increment front by 1
+6. Define the function print_queue()
+    6.1 If the queue is empty, display Queue is empty
+    6.2 Else
+        6.2.1 Set i to front
+        6.2.2 Repeat until i is equal to rear
+        6.2.3 Print the element at i
+        6.2.4 Increment i by 1
+7. Display the menu
+    7.1 Read the choice
+    7.2 If the choice is 1
+        7.2.1 Call the insert function
+    7.3 Else if the choice is 2
+        7.3.1 Call the delete function
+    7.4 Else if the choice is 3
+        7.4.1 Call the display function
+    7.5 Else if the choice is 4
+        7.5.1 Exit
+8. Repeat steps 4 and 5
+9. Stop
+*/
+
 #include <stdio.h>
 
 // Declare global variables
@@ -27,7 +64,7 @@ int main(void)
     while(1)
     {
         int op, element;
-        printf("\n1. Insert an element\n2. Delete element\n3. Display the queue\n4. Exit\n");
+        printf("\n1. Insert an element\n2. Delete element\n3. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &op);
         switch (op)
@@ -41,9 +78,6 @@ int main(void)
                 dequeue();
                 break;
             case 3:
-                print_queue();
-                break;
-            case 4:
                 return 0;
             default:
                 printf("Invalid choice\n");
@@ -79,6 +113,7 @@ void enqueue(int element)
     rear = (rear + 1) % size;
     items[rear] = element;
     printf("Inserted -> %d\n", element);
+    print_queue();
 }
 
 // Delete element from the queue
@@ -103,6 +138,7 @@ void dequeue()
     }
 
     printf("Deleted -> %d\n", element);
+    print_queue();
 }
 
 // Display the queue
