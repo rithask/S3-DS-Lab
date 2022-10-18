@@ -15,16 +15,16 @@ ALGORITHM
             3.1.1.1 Read the element and store it in the matrix[i][j]
 4. Repeat steps 2 and 3 for the second matrix
 5. Display both the matrices
-    4.1 Iterate through the rows with i
-        4.1.1 Iterate through the columns with j
-            4.1.1.1 Display the element at matrix[i][j]
+    5.1 Iterate through the rows with i
+        5.1.1 Iterate through the columns with j
+            5.1.1.1 Display the element at matrix[i][j]
 6. Convert the matrices to tuple form
     6.1 Initialize the number of non-zero elements to 1
     6.2 For each element in the matrix
-        6.3.1 If the element is non-zero
-            6.3.1.1 Copy the row number, column number and element to the tuple matrix
-            6.3.1.2 Increment the number of non-zero elements
-    5.4 Store the row number, column number and number of non-zero elements in the first row of the tuple matrix
+        6.2.1 If the element is non-zero
+            6.2.1.1 Copy the row number, column number and element to the tuple matrix
+            6.2.1.2 Increment the number of non-zero elements
+    6.3 Store the row number, column number and number of non-zero elements in the first row of the tuple matrix
 7. Display the tuple form of the matrices
     7.1 Iterate through the rows with i
         7.1.1 Iterate through the columns with j
