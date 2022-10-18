@@ -30,15 +30,14 @@ ALGORITHM
         6.2.4 Increment i by 1
 7. Display the menu
     7.1 Read the choice
-    7.2 If the choice is 1
-        7.2.1 Call the insert function
-    7.3 Else if the choice is 2
-        7.3.1 Call the delete function
-    7.4 Else if the choice is 3
-        7.4.1 Call the display function
-    7.5 Else if the choice is 4
-        7.5.1 Exit
-8. Repeat steps 4 and 5
+    7.2 If the choice is insert
+        7.2.1 Read the element
+        7.2.2 Call the function enqueue()
+    7.3 Else if the choice is delete
+        7.3.1 Call the dequeue function
+    7.3 Else if the choice is exit
+        7.3.1 Exit
+8. Repeat from step 7
 9. Stop
 */
 
