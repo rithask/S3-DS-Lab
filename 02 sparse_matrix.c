@@ -27,8 +27,7 @@ ALGORITHM
     6.3 Store the row number, column number and number of non-zero elements in the first row of the tuple matrix
 7. Display the tuple form of the matrices
     7.1 Iterate through the rows with i
-        7.1.1 Iterate through the columns with j
-            7.1.1.1 Display the element at tuple_matrix[i][j]
+        7.1.1 Display the row number, column number and element
 8. Find the transpose of the matrix
     8.1 Initialize the number of non-zero elements to 1
     8.2 For each element in the matrix
@@ -38,7 +37,35 @@ ALGORITHM
     8.3 Sort the transpose matrix using bubble sort
 9. Display the transpose of the matrix using the same algorithm as step 7
 10. Find the sum of the two matrices
-11. Display the sum of the two matrices
+    10.1 If the row number and column number of the two matrices are not equal
+        10.1.1 Display "The matrices cannot be added"
+    10.2 Else
+        10.2.1 Declare and initialize i, j and k to 1
+        10.2.2 While i <= the number of non-zero elements in the first matrix and j <= the number of non-zero elements in the second matrix
+            10.2.2.1 If the row number of the current element of tuple 1 is equal to the row number of the current element of tuple 2
+                10.2.2.1.1 If the column number of the current element of tuple 1 is equal to the column number of the current element of tuple 2
+                    Copy over the row number, column number and sum of the two elements to the sum matrix
+                    Increment i, j and k
+                10.2.2.1.2 Else if the column number of the current element of tuple 1 is less than the column number of the current element of tuple 2
+                    Copy over the row number, column number and element of the current element of tuple 1 to the sum matrix
+                    Increment i and k
+                10.2.2.1.3 Else
+                    Copy over the row number, column number and element of the current element of tuple 2 to the sum matrix
+                    Increment j and k
+            10.2.2.2 If the row number of the current element of tuple 1 is less than the row number of the current element of tuple 2
+                Copy over the row number, column number and element of the current element of tuple 1 to the sum matrix
+                Increment i and k
+            10.2.2.3 If the row number of the current element of tuple 1 is greater than the row number of the current element of tuple 2
+                Copy over the row number, column number and element of the current element of tuple 2 to the sum matrix
+                Increment j and k
+        10.2.3 While i <= the number of non-zero elements in the first matrix
+            Copy over the row number, column number and element of the current element of tuple 1 to the sum matrix
+            Increment i and k
+        10.2.4 While j <= the number of non-zero elements in the second matrix  
+            Copy over the row number, column number and element of the current element of tuple 2 to the sum matrix
+            Increment j and k
+        10.2.5 Store the row number, column number and number of non-zero elements in the first row of the sum matrix
+11. Display the sum of the two matrices using the same algorithm as step 7
 12. Stop
 */
 #include <stdio.h>
@@ -202,6 +229,12 @@ void print_tuple(int b[10][3])
 // Add two tuples
 void add_tuple(int a[][3], int b[][3], int sum[][3])
 {
+    if (a[0][0] != b[0][0] || a[0][1] != b[0][1])
+    {
+        printf("The matrices cannot be added.\n");
+        return;
+    }
+
     // First element of the tuple is the number of non-zero elements
     int i = 1, j = 1, k = 1;
     while (i <= a[0][2] && j <= b[0][2])
