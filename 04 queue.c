@@ -6,34 +6,57 @@ Write a program to Implement a queue using arrays with the operations:
 The program should display the queue elements after each operation
 
 ALGORITHM
+
+Global variables:
+    size: size of the queue
+    queue: array to store the queue elements
+    front: index of the front element
+    rear: index of the rear element
+
+insert function
 1. Start
-2. Declare the array queue[50], front, rear, choice, item
-3. Initialize front = rear = -1
-4. Read size of the queue from the user
-6. Display the menu
-7. Read the choice from the user
-8. If choice is insert
-    8.1 Read the item from the user
-    8.2 If rear == size - 1
-        8.2.1 Display "Queue is full"
-        8.2.2 Goto step 6
-    8.3 Else
-        8.3.1 If front == -1
-        8.3.2 front = 0
-        8.3.3 rear = rear + 1
-        8.3.4 queue[rear] = item
-    8.4 Display the queue elements
-    8.5 Goto step 6
-9. Else if choice is delete
-    9.1 If front == -1 or front > rear
-        9.1.1 Display "Queue underflow"
-        9.1.2 Goto step 6
-    9.2 Else
-        9.2.1 item = queue[front]
-        9.2.2 If front == rear
-    9.3 Display queue elements
-    9.4 Goto step 6
-10. Stop
+2. If rear is equal to size - 1, display Queue is full
+3. Else
+    3.1 If front is equal to -1, set front = 0
+    3.2 rear = rear + 1
+    3.3 Insert the element at rear
+4. Stop
+
+delete function
+1. Start
+2. If front is equal to -1 or front > rear, display Queue underflow
+3. Else
+    3.1 Print the element at front
+    3.2 front = front + 1
+4. Stop
+
+display function
+1. Start
+2. If front is equal -1, display Queue is empty
+3. Else
+    3.1 Set i to front
+    3.2 Repeat until i is equal to rear
+    3.3 Print the element at i
+    3.4 Increment i by 1
+4. Stop
+
+main function
+1. Start
+2. Read the size of the queue
+3. Display the menu
+4. Read the choice
+    4.1 If choice is insert
+        4.1.1 Read the element to be inserted
+        4.1.2 Call the insert function
+        4.1.3 Display the queue elements
+    4.2 Else if choice is delete
+        4.2.1 Call the delete function
+        4.2.2 Display the queue elements
+    4.3 Else if choice is exit
+        4.3.1 Exit
+    4.4 Else
+        4.4.1 Display Invalid choice
+5. Stop
 */
 
 #include <stdio.h>

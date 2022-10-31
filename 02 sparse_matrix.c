@@ -7,66 +7,122 @@ Find the sum of the two matrices in tuple form and display the sum in tuple form
 
 /*
 ALGORITHM
+
+Read matrix function
 1. Start
-2. Read the number of rows and columns of the matrix
-3. Read the elements of the matrix
-    3.1 Iterate through the rows with i
-        3.1.1 Iterate through the columns with j
-            3.1.1.1 Read the element and store it in the matrix[i][j]
-4. Repeat steps 2 and 3 for the second matrix
-5. Display both the matrices
-    5.1 Iterate through the rows with i
-        5.1.1 Iterate through the columns with j
-            5.1.1.1 Display the element at matrix[i][j]
-6. Convert the matrices to tuple form
-    6.1 Initialize the number of non-zero elements to 1
-    6.2 For each element in the matrix
-        6.2.1 If the element is non-zero
-            6.2.1.1 Copy the row number, column number and element to the tuple matrix
-            6.2.1.2 Increment the number of non-zero elements
-    6.3 Store the row number, column number and number of non-zero elements in the first row of the tuple matrix
-7. Display the tuple form of the matrices
-    7.1 Iterate through the rows with i
-        7.1.1 Display the row number, column number and element
-8. Find the transpose of the matrix
-    8.1 Initialize the number of non-zero elements to 1
-    8.2 For each element in the matrix
-        8.2.1 Read the row number, column number and element from the tuple matrix
-        8.2.2 Copy the column number, row number and element to the transpose matrix
-        8.2.3 Increment the number of non-zero elements
-    8.3 Sort the transpose matrix using bubble sort
-9. Display the transpose of the matrix using the same algorithm as step 7
-10. Find the sum of the two matrices
-    10.1 If the row number and column number of the two matrices are not equal
-        10.1.1 Display "The matrices cannot be added"
-    10.2 Else
-        10.2.1 Declare and initialize i, j and k to 1
-        10.2.2 While i <= the number of non-zero elements in the first matrix and j <= the number of non-zero elements in the second matrix
-            10.2.2.1 If the row number of the current element of tuple 1 is equal to the row number of the current element of tuple 2
-                10.2.2.1.1 If the column number of the current element of tuple 1 is equal to the column number of the current element of tuple 2
-                    Copy over the row number, column number and sum of the two elements to the sum matrix
-                    Increment i, j and k
-                10.2.2.1.2 Else if the column number of the current element of tuple 1 is less than the column number of the current element of tuple 2
-                    Copy over the row number, column number and element of the current element of tuple 1 to the sum matrix
-                    Increment i and k
-                10.2.2.1.3 Else
-                    Copy over the row number, column number and element of the current element of tuple 2 to the sum matrix
-                    Increment j and k
-            10.2.2.2 If the row number of the current element of tuple 1 is less than the row number of the current element of tuple 2
-                Copy over the row number, column number and element of the current element of tuple 1 to the sum matrix
-                Increment i and k
-            10.2.2.3 If the row number of the current element of tuple 1 is greater than the row number of the current element of tuple 2
-                Copy over the row number, column number and element of the current element of tuple 2 to the sum matrix
-                Increment j and k
-        10.2.3 While i <= the number of non-zero elements in the first matrix
-            Copy over the row number, column number and element of the current element of tuple 1 to the sum matrix
-            Increment i and k
-        10.2.4 While j <= the number of non-zero elements in the second matrix  
-            Copy over the row number, column number and element of the current element of tuple 2 to the sum matrix
-            Increment j and k
-        10.2.5 Store the row number, column number and number of non-zero elements in the first row of the sum matrix
-11. Display the sum of the two matrices using the same algorithm as step 7
-12. Stop
+2. Read the number of rows and columns
+3. Iterate from 0 to number of rows
+    3.1 Iterate from 0 to number of columns
+        3.1.1 Read the element
+        3.1.2 Store the element in the array
+4. End
+
+Print matrix function
+1. Start
+2. Iterate from 0 to number of rows
+    2.1 Iterate from 0 to number of columns
+        2.1.1 Print the element
+    2.2 Print a new line
+3. End
+
+Convert matrix to tuple function
+1. Start
+2. Declare and initialize k to 1
+3. Iterate from 0 to number of rows
+    3.1 Iterate from 0 to number of columns
+        3.1.1 If the element is not 0
+            3.1.1.1 Store the row number, column number and element in the tuple array
+            3.1.1.2 Increment k
+4. Store the number of rows, number of columns and k in the tuple array
+5. End
+
+Print tuple function
+1. Start
+2. Store array[0][2] in n
+3. Iterate from 0 to n
+    3.1 Print the row number, column number and element
+4. End
+
+Transpose tuple function
+1. Start
+2. Store array1[0][0] in array2[0][1]
+3. Store array1[0][1] in array2[0][0]
+4. Store array1[0][2] in array2[0][2]
+5. Iterate from 1 to array1[0][2]
+    5.1 Store array1[i][1] in array2[i][0]
+    5.2 Store array1[i][0] in array2[i][1]
+    5.3 Store array1[i][2] in array2[i][2]
+6. Sort the array2 using the bubble sort algorithm
+7. End
+
+Add tuple function
+1. Start
+2. If rows and columns of array1 and array2 are not equal
+    2.1 Print "Addition not possible"
+    2.2 Exit
+3. Declare and initialize i, j, k to 1
+4. While i < array1[0][2] and j < array2[0][2]
+    4.1 if array1[i][0] < array2[j][0]
+        4.1.1 Store array1[i][0] in array3[k][0]
+        4.1.2 Store array1[i][1] in array3[k][1]
+        4.1.3 Store array1[i][2] in array3[k][2]
+        4.1.4 Increment i and k
+    4.2 Else if array1[i][0] > array2[j][0]
+        4.2.1 Store array2[j][0] in array3[k][0]
+        4.2.2 Store array2[j][1] in array3[k][1]
+        4.2.3 Store array2[j][2] in array3[k][2]
+        4.2.4 Increment j and k
+    4.3 Else if array1[i][0] == array2[j][0]
+        4.3.1 If array1[i][1] < array2[j][1]
+            i. Store array1[i][0] in array3[k][0]
+            ii. Store array1[i][1] in array3[k][1]
+            iii. Store array1[i][2] in array3[k][2]
+            iv. Increment i and k
+        4.3.2 Else if array1[i][1] > array2[j][1]
+            i. Store array2[j][0] in array3[k][0]
+            ii. Store array2[j][1] in array3[k][1]
+            iii. Store array2[j][2] in array3[k][2]
+            iv. Increment j and k
+        4.3.3 Else if array1[i][1] == array2[j][1]
+            i. Store array1[i][0] in array3[k][0]
+            ii. Store array1[i][1] in array3[k][1]
+            iii. Store array1[i][2] + array2[j][2] in array3[k][2]
+            iv. Increment i, j and k
+5. If i < array1[0][2]
+    5.1 Store array1[i][0] in array3[k][0]
+    5.2 Store array1[i][1] in array3[k][1]
+    5.3 Store array1[i][2] in array3[k][2]
+    5.4 Increment i and k
+6. If j < array2[0][2]
+    6.1 Store array2[j][0] in array3[k][0]
+    6.2 Store array2[j][1] in array3[k][1]
+    6.3 Store array2[j][2] in array3[k][2]
+    6.4 Increment j and k
+7. Store array1[0][0] in array3[0][0]
+8. Store array1[0][1] in array3[0][1]
+9. Store k - 1 in array3[0][2]
+10. End
+
+Main function
+1. Start
+2. Declare two matrices, two tuples, two transposed tuples and one sum tuple
+3. Declare n1, m1 and n2, m2
+4. Read two matrices using the read matrix function
+5. Display a menu
+    5.1 If the user enters 1
+        5.1.1 Display the matrices
+    5.2 Else if the user enters 2
+        5.2.1 Convert the matrices to tuples using the convert matrix to tuple function
+        5.2.2 Display the tuples
+    5.3 Else if the user enters 3
+        5.3.1 Find the transpose of the tuples using the transpose tuple function
+        5.3.2 Display the transposed tuples
+    5.4 Else if the user enters 4
+        5.4.1 Add the tuples using the add tuple function
+        5.4.2 Display the sum tuple
+    5.5 Else if the user enters 5
+        5.5.1 Exit
+6. End
 */
 #include <stdio.h>
 
@@ -84,34 +140,58 @@ int main(void)
     int trans1[20][3], trans2[20][3];
     int sum[20][3];
     int m1, n1, m2, n2;
+    int choice;
 
     printf("Matrix 1:\n");
     read_matrix(a, &m1, &n1);
     printf("Matrix 2:\n");
     read_matrix(b, &m2, &n2);
 
-    printf("\nMatrix 1: \n");
-    print_matrix(a, m1, n1);
-    printf("\nMatrix 2: \n");
-    print_matrix(b, m2, n2);
-
     to_tuple(a, tp1, m1, n1);
     to_tuple(b, tp2, m2, n2);
-    printf("\nTuple form of matrix 1:\n");
-    print_tuple(tp1);
-    printf("\nTuple form of matrix 2:\n");
-    print_tuple(tp2);
 
     to_transpose(tp1, trans1);
     to_transpose(tp2, trans2);
-    printf("\nTranspose of tuple form of matrix 1:\n");
-    print_tuple(trans1);
-    printf("\nTranspose of tuple form of matrix 2:\n");
-    print_tuple(trans2);
 
     add_tuple(tp1, tp2, sum);
-    printf("\nSum of tuple form of matrix 1 and matrix 2:\n");
-    print_tuple(sum);
+
+    while (1)
+    {
+        printf("1. Print matrices\n2. Print tuples\n3. Print transposed tuples\n4. Print sum of tuples\n5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+            case 1:
+                printf("\nMatrix 1...\n");
+                print_matrix(a, m1, n1);
+                printf("\nMatrix 2...\n");
+                print_matrix(b, m2, n2);
+                break;
+            case 2:
+                printf("\nTuple 1...\n");
+                print_tuple(tp1);
+                printf("\nTuple 2...\n");
+                print_tuple(tp2);
+                break;
+            case 3:
+                printf("\nTransposed tuple 1...\n");
+                print_tuple(trans1);
+                printf("\nTransposed tuple 2...\n");
+                print_tuple(trans2);
+                break;
+            case 4:
+                printf("\nSum of tuples...\n");
+                print_tuple(sum);
+                break;
+            case 5:
+                printf("Exiting...\n");
+                exit(0);
+            default:
+                printf("Invalid choice. Try again.\n");
+        }
+    }
 
     return 0;
 }

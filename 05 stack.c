@@ -6,33 +6,55 @@ Write a program to Implement a stack using arrays with the operations:
 The program should display the stack elements after each operation
 
 ALGORITHM
+
+Global variables:
+    size: size of the stack
+    stack: array to store the stack elements
+    top: index of the top element
+
+push function
 1. Start
-2. Declare the array stack[50], top, choice, item
-3. Initialize top = -1
-4. Read size of the stack from the user
-6. Display the menu
-7. Read the choice from the user
-8. If choice is insert
-    8.1 Read the item from the user
-    8.2 If top == size - 1
-        8.2.1 Display "Stack is full"
-        8.2.2 Goto step 6
-    8.3 Else
-        8.3.1 top = top + 1
-        8.3.2 stack[top] = item
-    8.4 Display the stack elements
-    8.5 Goto step 6
-9. Else if choice is delete
-    9.1 If top == -1
-        9.1.1 Display "Stack underflow"
-        9.1.2 Goto step 6
-    9.2 Else
-        9.2.1 item = stack[top]
-        9.2.2 top = top - 1
-        9.2.3 Display item
-    9.3 Display stack elements
-    9.4 Goto step 6
-10. Stop
+2. If top is equal to size - 1, display Stack is full
+3. Else
+    3.1 top = top + 1
+    3.2 Insert the element at top
+4. Stop
+
+pop function
+1. Start
+2. If top is equal to -1, display Stack underflow
+3. Else
+    3.1 Print the element at top
+    3.2 top = top - 1
+4. Stop
+
+display function
+1. Start
+2. If top is equal -1, display Stack is empty
+3. Else
+    3.1 Set i to 0
+    3.2 Repeat until i is equal top
+    3.3 Print the element at i
+    3.4 Increment i by 1
+4. Stop
+
+main function
+1. Start
+2. Read the size of the stack
+3. Display the menu
+4. Read the choice
+    4.1 If choice is push
+        4.1.1 Read the element to be pushed
+        4.1.2 Call the push function
+        4.1.3 Display the stack elements
+    4.2 Else if choice is pop
+        4.2.1 Call the pop function
+        4.2.2 Display the stack elements
+    4.3 Else if choice is exit
+        4.3.1 Exit
+    4.4 Else
+        4.4.1 Display Invalid choice
+5. Stop
 */
 
 #include <stdio.h>
@@ -42,8 +64,8 @@ int size;
 int stack[50];
 int top = -1;
 
-void insert(int);
-int delete();
+void push(int);
+int pop();
 void display();
 
 int main()
@@ -62,11 +84,11 @@ int main()
         case 1:
             printf("\nEnter the item to be inserted: ");
             scanf("%d", &item);
-            insert(item);
+            push(item);
             display();
             break;
         case 2:
-            item = delete();
+            item = pop();
             if (item != -1)
                 printf("\nDeleted item is %d\n", item);
             display();
@@ -79,7 +101,7 @@ int main()
     }
 }
 
-void insert(int item)
+void push(int item)
 {
     if (top == size - 1)
     {
@@ -90,7 +112,7 @@ void insert(int item)
     stack[top] = item;
 }
 
-int delete()
+int pop()
 {
     if (top == -1)
     {

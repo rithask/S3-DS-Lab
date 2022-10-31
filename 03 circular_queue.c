@@ -7,38 +7,69 @@ Implement a circular queue using arrays with the operations:
 
 /*
 ALGORITHM
+
+Global variables:
+    size: size of the queue
+    queue: array to store the queue elements
+    front: index of the front element
+    rear: index of the rear element
+
+is full function
 1. Start
-2. Declare and initialise the front and rear to -1 globally
-3. Declare the array globally
-4. Define the function enqueue()
-    4.1 If the queue is full, display Queue is full
-    4.2 Else
-        4.2.1 If the queue is empty, increment front and rear by 1
-        4.2.2 Else, increment rear by 1
-        4.2.3 Insert the element at the rear
-5. Define the function dequeue()
-    5.1 If the queue is empty, display Queue is empty
-    5.2 Else
-        5.2.1 If front and rear are equal, set front and rear to -1
-        5.2.2 Else, increment front by 1
-6. Define the function print_queue()
-    6.1 If the queue is empty, display Queue is empty
-    6.2 Else
-        6.2.1 Set i to front
-        6.2.2 Repeat until i is equal to rear
-        6.2.3 Print the element at i
-        6.2.4 Increment i by 1
-7. Display the menu
-    7.1 Read the choice
-    7.2 If the choice is insert
-        7.2.1 Read the element
-        7.2.2 Call the function enqueue()
-    7.3 Else if the choice is delete
-        7.3.1 Call the dequeue function
-    7.3 Else if the choice is exit
-        7.3.1 Exit
-8. Repeat from step 7
-9. Stop
+2. If rear is equal to size - 1 and front is equal to 0 or rear is equal to front - 1, return 1
+3. Else, return 0
+4. Stop
+
+is empty function
+1. Start
+2. If front is equal to -1, return 1
+3. Else, return 0
+4. Stop
+
+enqueue function
+1. Start
+2. If is full function returns 1, display Queue is full
+3. Else
+    3.1 If front is equal to -1, set front = 0
+    3.2 rear = (rear + 1) % size
+    3.3 Insert the element at rear
+4. Stop
+
+dequeue function
+1. Start
+2. If is empty function returns 1, display Queue is empty
+3. Else
+    3.1 If front is equal to rear, set front = rear = -1
+    3.2 Else, front = (front + 1) % size
+4. Stop
+
+print_queue function
+1. Start
+2. If is empty function returns 1, display Queue is empty
+3. Else
+    3.1 Set i to front
+    3.2 Repeat until i is equal to rear
+    3.3 Print the element at i
+    3.4 Increment i by 1
+4. Stop
+
+main function
+1. Start
+2. Read the size of the queue
+3. Display the menu
+4. Read the choice
+    4.1 If choice is insert
+        4.1.1 Read the element to be inserted
+        4.1.2 Call the enqueue function
+    4.2 Else if choice is delete
+        4.2.1 Call the dequeue function
+    4.3 Else if choice is display
+        4.3.1 Call the print_queue function
+    4.4 Else if choice is exit
+        4.4.1 Exit
+    4.5 Else
+        4.5.1 Display Invalid choice
+5. Stop
 */
 
 #include <stdio.h>
@@ -56,7 +87,7 @@ void print_queue();
 
 int main(void)
 {
-    printf("Enter the size of the array: ");
+    printf("Enter the size of the queue: ");
     scanf("%d", &size);
 
     // Show a menu till the user exits

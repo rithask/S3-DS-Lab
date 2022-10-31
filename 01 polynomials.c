@@ -7,39 +7,61 @@ the resultant polynomial.
 
 /*
 ALGORITHM
+
+Read function
 1. Start
-2. Define a structure to store the coefficients and the exponent of a term
-3. Read the number of terms in the first polynomial
-4. Read the first polynomial
-    4.1 Iterate through the terms
-        4.1.1 Read the coefficient and exponent of the term
-        4.1.2 Store the coefficient and exponent in the first polynomial
-5. Repeat steps 2 and 3 for the second polynomial
-6. Sort the two polynomials in descending order of the exponents using bubble sort
-7. Display the Polynomials
-    7.1 Iterate through the terms
-        7.1.1 Display the coefficient and exponent of the term
-8. Add the two polynomials
-    8.1 Declare and initialise i, j and k to 0
-    8.2 While i < number of terms in the first polynomial and j < number of terms in the second polynomial
-        8.2.1 If the exponent of the term in the first polynomial > the exponent of the term in the second polynomial
-            8.2.1.1 Copy the coefficient and exponent of the term in the first polynomial to the resultant polynomial
-            8.2.1.2 Increment i and k
-        8.2.2 Else if the exponent of the term in the first polynomial < the exponent of the term in the second polynomial
-            8.2.2.1 Copy the coefficient and exponent of the term in the second polynomial to the resultant polynomial
-            8.2.2.2 Increment j and k
-        8.2.3 Else if the exponent of the term in the first polynomial = the exponent of the term in the second polynomial
-            8.2.3.1 Add the coefficients of the terms in the first and second polynomial
-            8.2.3.2 Copy the coefficient and exponent of the term in the any polynomial to the resultant polynomial
-            8.2.3.3 Increment i, j and k
-    8.3 While i < number of terms in the first polynomial
-        8.3.1 Copy the coefficient and exponent of the term in the first polynomial to the resultant polynomial
-        8.3.2 Increment i and k
-    8.4 While j < number of terms in the second polynomial
-        8.4.1 Copy the coefficient and exponent of the term in the second polynomial to the resultant polynomial
-        8.4.2 Increment j and k
-9. Display the resultant polynomial using the same algorithm as step 7
-10. Stop
+2. Read the number of terms in the polynomial
+3. Iterate from 0 to number of terms
+    3.1 Read the coefficient and exponent of the term
+    3.2 Store the coefficient and exponent in the array
+4. End
+
+Print function
+1. Start
+2. Iterate from 0 to number of terms
+    2.1 If the coefficient is 0, skip the termt
+    2.2 If the exponent is 0, print coefficient
+    2.3 Else print coefficient and exponent
+3. End
+
+Sort function
+1. Start
+2. Iterate from 0 to number of terms
+    2.1 Iterate from 0 to number of terms - 1
+        2.1.1 If the exponent of the term is less than the exponent of the next term
+            2.1.1.1 Swap the coefficients and exponents of the two terms
+3. End
+
+Add function
+1. Start
+2. Declare and initialize i, j, k to 0
+3. While i < n1 and j < n2
+    3.1 If the exponent of the first polynomial is greater than the exponent of the second polynomial
+        3.1.1 Store the coefficient and exponent of the first polynomial in the result array
+        3.1.2 Increment i and k
+    3.2 Else if the exponent of the first polynomial is less than the exponent of the second polynomial
+        3.2.1 Store the coefficient and exponent of the second polynomial in the result array
+        3.2.2 Increment j and k
+    3.3 Else
+        3.3.1 Store the sum of the coefficients and exponent of the first polynomial in the result array
+        3.3.2 Increment i, j and k
+4. While i < n1
+    4.1 Store the coefficient and exponent of the first polynomial in the result array
+    4.2 Increment i and k
+5. While j < n2
+    5.1 Store the coefficient and exponent of the second polynomial in the result array
+    5.2 Increment j and k
+6. End
+
+Main function
+1. Start
+2. Declare n1, n2, n3
+3. Read the first and second polynomial using the read function
+4. Sort the first and second polynomial using the sort function
+5. Add the first and second polynomial using the add function
+6. Print the first polynomial and the second polynomial using the print function
+7. Print the result polynomial using the print function
+8. End
 */
 
 #include <stdio.h>
