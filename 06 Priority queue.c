@@ -1,72 +1,175 @@
 /*
-Write a program to implement a priority queue using array 
-and perform operations on it.
+Implement a Priority Queue using arrays with the operations
+    Insert elements to the Priority Queue.
+    Delete elements from the Priority Queue.
+    Display the contents of the Priority Queue after each operation.
 */
 
-# include <stdio.h>
+/*
+ALGORITHM
 
-int front = -1, rear = -1;
-int size;
-int items[100];
+Global Declarations:
+    pq array of size 10
+    size = -1
+
+is_full function
+1. Start
+2. if size = MAX - 1 return 1
+4. else return 0
+5. Stop
+
+is_empty function
+1. Start
+2. if size = -1 return 1
+4. else return 0
+5. Stop
+
+enqueue function
+1. Start
+2. if is_full returns 1 then
+    2.1 Display "Queue is full"
+3. Else
+    3.1 Increment size
+    3.2 Set pq[size].data = data
+    3.3 Set pq[size].priority = priority
+    3.4 Sort the queue using priority
+4. Stop
+
+dequeue function
+1. Start
+2. if is_empty returns 1 then
+    2.1 Display "Queue is empty"
+3. Else
+    3.1 Display "Deleted element is " pq[size].data
+    3.2 Decrement size
+4. Stop
+
+display function
+1. Start
+2. if is_empty returns 1 then
+    2.1 Display "Queue is empty"
+3. Else
+    3.1 Display "Queue is "
+    3.2 for i = 0 to size
+        3.2.1 Display pq[i].data and pq[i].priority
+4. Stop
+
+Main function
+1. Start
+2. Declare choice, data, priority
+3. Display a menu
+4. Read choice
+5. If choice is insert
+    5.1 Read data and priority
+    5.2 Call enqueue function
+    5.3 Call display function
+6. Else if choice is delete
+    6.1 Call dequeue function
+    6.2 Call display function
+7. Else if choice is display
+    7.1 Call display function
+8. Else if choice is exit
+    8.1 Exit
+9. Else
+    9.1 Display "Invalid choice"
+10. Goto step 3
+11. Stop
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 100
+
+struct item pq[MAX];
+int size = -1;
 
 int is_full();
 int is_empty();
-void enqueue(int element);
+void enqueue(int data, int priority);
 void dequeue();
-void print_queue();
+void display();
+
+struct item 
+{
+    int data;
+    int priority;
+};
 
 int main()
 {
-    int choice, element;
-    printf("Enter the size of the queue: ");
-    scanf("%d", &size);
+    int choice, data, priority;
     while (1)
     {
-        printf("\n1. Insert an element\n2. Delete element\n3. Exit\n");
+        printf("\n1. Insert\n2. Delete\n3. Display\n4. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
+        printf("\n");
         switch (choice)
         {
             case 1:
-                printf("\nEnter the element to be inserted: ");
-                scanf("%d", &element);
-                enqueue(element);
+                printf("Enter data and priority: ");
+                scanf("%d %d", &data, &priority);
+                enqueue(data, priority);
+                display();
                 break;
             case 2:
                 dequeue();
+                display();
                 break;
             case 3:
-                return 0;
+                display();
+                break;
+            case 4:
+                exit(0);
             default:
                 printf("Invalid choice\n");
-                break;
         }
     }
+    return 0;
 }
 
 int is_full()
 {
-    if ((rear == size - 1 && front == 0) || (rear == front - 1)) return 1;
-    return 0;
+    if (size == MAX - 1)
+        return 1;
+    else
+        return 0;
 }
 
 int is_empty()
 {
-    if (front == -1) return 1;
-    return 0;
+    if (size == -1)
+        return 1;
+    else
+        return 0;
 }
 
-void enqueue(int element)
+void enqueue(int data, int priority)
 {
     if (is_full())
     {
         printf("Queue is full\n");
         return;
     }
-    if (front == -1) front = 0;
-    if (rear == size - 1) rear = -1;
-    items[++rear] = element;
-    printf("Element inserted successfully\n");
+    size++;
+    pq[size].data = data;
+    pq[size].priority = priority;
+
+    int i, j;
+    struct item temp;
+    for (i = 0; i <= size; i++)
+    {
+        for (j = i + 1; j <= size; j++)
+        {
+            if (pq[i].priority > pq[j].priority)
+            {
+                temp = pq[i];
+                pq[i] = pq[j];
+                pq[j] = temp;
+            }
+        }
+    }
 }
 
 void dequeue()
@@ -76,30 +179,20 @@ void dequeue()
         printf("Queue is empty\n");
         return;
     }
-    printf("Element deleted: %d\n", items[front++]);
-    if (front == size) front = 0;
-    if (front - 1 == rear) front = rear = -1;
+    printf("Deleted item is %d\n", pq[size].data);
+    size--;
 }
 
-void print_queue()
+void display()
 {
     if (is_empty())
     {
         printf("Queue is empty\n");
         return;
     }
-    printf("Queue: ");
-    if (front <= rear)
+    printf("\nData\tPriority\n");
+    for (int i = 0; i <= size; i++)
     {
-        for (int i = front; i <= rear; i++)
-            printf("%d ", items[i]);
+        printf("%d\t%d\n", pq[i].data, pq[i].priority);
     }
-    else
-    {
-        for (int i = front; i < size; i++)
-            printf("%d ", items[i]);
-        for (int i = 0; i <= rear; i++)
-            printf("%d ", items[i]);
-    }
-    printf("\n");
 }
