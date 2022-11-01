@@ -9,7 +9,7 @@ Implement a Priority Queue using arrays with the operations
 ALGORITHM
 
 Global Declarations:
-    pq array of size 10
+    pq array of size 100
     size = -1
 
 is_full function
@@ -29,16 +29,17 @@ enqueue function
 2. if is_full returns 1 then
     2.1 Display "Queue is full"
 3. Else
-    3.1 Increment size
-    3.2 Set pq[size].data = data
-    3.3 Set pq[size].priority = priority
-    3.4 Sort the queue using priority
+    3.1 Read element
+    3.2 Read priority
+    3.3 size++
+    3.4 Store element and priority in pq[size]
+    3.5 Sort the array in ascending order of priority
 4. Stop
 
 dequeue function
 1. Start
 2. if is_empty returns 1 then
-    2.1 Display "Queue is empty"
+    2.1 Return
 3. Else
     3.1 Display "Deleted element is " pq[size].data
     3.2 Decrement size
@@ -81,12 +82,11 @@ Main function
 
 #define MAX 100
 
-struct item pq[MAX];
 int size = -1;
 
 int is_full();
 int is_empty();
-void enqueue(int data, int priority);
+void enqueue();
 void dequeue();
 void display();
 
@@ -94,7 +94,7 @@ struct item
 {
     int data;
     int priority;
-};
+}pq[MAX];
 
 int main()
 {
@@ -108,9 +108,7 @@ int main()
         switch (choice)
         {
             case 1:
-                printf("Enter data and priority: ");
-                scanf("%d %d", &data, &priority);
-                enqueue(data, priority);
+                enqueue();
                 display();
                 break;
             case 2:
@@ -121,6 +119,7 @@ int main()
                 display();
                 break;
             case 4:
+                printf("Exiting...\n");
                 exit(0);
             default:
                 printf("Invalid choice\n");
@@ -145,7 +144,7 @@ int is_empty()
         return 0;
 }
 
-void enqueue(int data, int priority)
+void enqueue()
 {
     if (is_full())
     {
@@ -153,8 +152,9 @@ void enqueue(int data, int priority)
         return;
     }
     size++;
-    pq[size].data = data;
-    pq[size].priority = priority;
+
+    printf("Enter data and priority: ");
+    scanf("%d %d", &pq[size].data, &pq[size].priority);
 
     int i, j;
     struct item temp;
@@ -176,7 +176,6 @@ void dequeue()
 {
     if (is_empty())
     {
-        printf("Queue is empty\n");
         return;
     }
     printf("Deleted item is %d\n", pq[size].data);

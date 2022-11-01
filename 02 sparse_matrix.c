@@ -124,6 +124,7 @@ Main function
         5.5.1 Exit
 6. End
 */
+
 #include <stdio.h>
 
 void read_matrix(int a[][10], int *m, int *n);

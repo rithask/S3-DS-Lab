@@ -32,7 +32,8 @@ enqueue function
 3. Else
     3.1 If front is equal to -1, set front = 0
     3.2 rear = (rear + 1) % size
-    3.3 Insert the element at rear
+    3.3 Read element
+    3.4 Store element in queue[rear]
 4. Stop
 
 dequeue function
@@ -59,8 +60,7 @@ main function
 3. Display the menu
 4. Read the choice
     4.1 If choice is insert
-        4.1.1 Read the element to be inserted
-        4.1.2 Call the enqueue function
+        4.1.1 Call the enqueue function
     4.2 Else if choice is delete
         4.2.1 Call the dequeue function
     4.3 Else if choice is display
@@ -81,33 +81,39 @@ int items[100];
 
 int is_full();
 int is_empty();
-void enqueue(int element);
+void enqueue();
 void dequeue();
 void print_queue();
 
 int main(void)
 {
-    printf("Enter the size of the queue: ");
+    printf("Enter the size of the circular queue: ");
     scanf("%d", &size);
 
     // Show a menu till the user exits
     while(1)
     {
         int op, element;
-        printf("\n1. Insert an element\n2. Delete element\n3. Exit\n");
+        printf("\n1. Insert an element\n2. Delete element\n3. Display\n4. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &op);
+        printf("\n");
+
         switch (op)
         {
             case 1:
-                printf("\nEnter the element to be inserted: ");
-                scanf("%d", &element);
-                enqueue(element);
+                enqueue();
+                print_queue();
                 break;
             case 2:
                 dequeue();
+                print_queue();
                 break;
             case 3:
+                print_queue();
+                break;
+            case 4:
+                printf("Exiting...\n");
                 return 0;
             default:
                 printf("Invalid choice\n");
@@ -131,29 +137,27 @@ int is_empty()
 }
 
 // Add element to the queue
-void enqueue(int element)
+void enqueue()
 {
     if (is_full())
     {
         printf("Queue is full.\n");
         return;
     }
-    
+
     if (front == -1) front = 0;
     rear = (rear + 1) % size;
-    items[rear] = element;
-    printf("Inserted -> %d\n", element);
-    print_queue();
+    
+    printf("Enter the element to be inserted: ");
+    scanf("%d", &items[rear]);
+
+    printf("Inserted -> %d\n", items[rear]);
 }
 
 // Delete element from the queue
 void dequeue()
 {
-    if (is_empty())
-    {
-        printf("Queue is empty.\n");
-        return;
-    }
+    if (is_empty()) return;
 
     int element = items[front];
 
@@ -168,7 +172,6 @@ void dequeue()
     }
 
     printf("Deleted -> %d\n", element);
-    print_queue();
 }
 
 // Display the queue
@@ -181,12 +184,10 @@ void print_queue()
         return;
     }
 
-    printf("Front = %d\n", front);
     printf("Items: ");
     for (i = front; i != rear; i = ((i + 1) % size))
     {
         printf("%d ", items[i]);
     }
-    printf("%d", items[i]);
-    printf("\nRear = %d\n", rear);
+    printf("%d\n", items[i]);
 }
