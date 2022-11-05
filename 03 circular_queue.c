@@ -91,9 +91,9 @@ int main(void)
     scanf("%d", &size);
 
     // Show a menu till the user exits
+    int op;
     while(1)
     {
-        int op, element;
         printf("\n1. Insert an element\n2. Delete element\n3. Display\n4. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &op);

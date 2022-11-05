@@ -126,6 +126,7 @@ Main function
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 void read_matrix(int a[][10], int *m, int *n);
 void print_matrix(int a[][10], int m, int n);
@@ -332,6 +333,7 @@ void add_tuple(int a[][3], int b[][3], int sum[][3])
                 sum[k][2] = a[i][2] + b[j][2];
                 i++;
                 j++;
+                if (sum[k][2] == 0) continue;
                 k++;
             }
             // If the column number of the current element of tuple 1 is less than the column number of the current element of tuple 2
