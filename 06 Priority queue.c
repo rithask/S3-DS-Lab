@@ -12,50 +12,7 @@ Global Declarations:
     pq array of size 100
     size = -1
 
-is_full function
-1. Start
-2. if size = MAX - 1 return 1
-4. else return 0
-5. Stop
-
-is_empty function
-1. Start
-2. if size = -1 return 1
-4. else return 0
-5. Stop
-
-enqueue function
-1. Start
-2. if is_full returns 1 then
-    2.1 Display "Queue is full"
-3. Else
-    3.1 Read element
-    3.2 Read priority
-    3.3 size++
-    3.4 Store element and priority in pq[size]
-    3.5 Sort the array in ascending order of priority
-4. Stop
-
-dequeue function
-1. Start
-2. if is_empty returns 1 then
-    2.1 Return
-3. Else
-    3.1 Display "Deleted element is " pq[size].data
-    3.2 Decrement size
-4. Stop
-
-display function
-1. Start
-2. if is_empty returns 1 then
-    2.1 Display "Queue is empty"
-3. Else
-    3.1 Display "Queue is "
-    3.2 for i = 0 to size
-        3.2.1 Display pq[i].data and pq[i].priority
-4. Stop
-
-Main function
+Algorithm for main
 1. Start
 2. Declare choice, data, priority
 3. Display a menu
@@ -75,6 +32,49 @@ Main function
     9.1 Display "Invalid choice"
 10. Goto step 3
 11. Stop
+
+Algorithm to check if the priority queue is full
+1. Start
+2. if size = MAX - 1 return 1
+4. else return 0
+5. Stop
+
+Algorithm to check if the priority queue is empty
+1. Start
+2. if size = -1 return 1
+3. else return 0
+4. Stop
+
+Algorithm to enqueue an element to the priority queue
+1. Start
+2. if is_full returns 1 then
+    2.1 Display "Queue is full"
+3. Else
+    3.1 Read element
+    3.2 Read priority
+    3.3 size++
+    3.4 Store element and priority in pq[size]
+    3.5 Sort the array in ascending order of priority
+4. Stop
+
+Algorithm to dequeue an element from the priority queue
+1. Start
+2. if is_empty returns 1 then
+    2.1 Return
+3. Else
+    3.1 Display "Deleted element is " pq[size].data
+    3.2 Decrement size
+4. Stop
+
+Algorithm to display the contents of the priority queue
+1. Start
+2. if is_empty returns 1 then
+    2.1 Display "Queue is empty"
+3. Else
+    3.1 Display "Queue is "
+    3.2 for i = 0 to size
+        3.2.1 Display pq[i].data and pq[i].priority
+4. Stop
 */
 
 #include <stdio.h>

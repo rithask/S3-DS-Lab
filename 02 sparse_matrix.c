@@ -8,24 +8,45 @@ Find the sum of the two matrices in tuple form and display the sum in tuple form
 /*
 ALGORITHM
 
-Read matrix function
+Algorithm for main
+1. Start
+2. Declare two matrices, two tuples, two transposed tuples and one sum tuple
+3. Declare n1, m1 and n2, m2
+4. Read two matrices using the read matrix function
+5. Display a menu
+    5.1 If the user enters 1
+        5.1.1 Display the matrices
+    5.2 Else if the user enters 2
+        5.2.1 Convert the matrices to tuples using the convert matrix to tuple function
+        5.2.2 Display the tuples
+    5.3 Else if the user enters 3
+        5.3.1 Find the transpose of the tuples using the transpose tuple function
+        5.3.2 Display the transposed tuples
+    5.4 Else if the user enters 4
+        5.4.1 Add the tuples using the add tuple function
+        5.4.2 Display the sum tuple
+    5.5 Else if the user enters 5
+        5.5.1 Exit
+6. Stop
+
+Algorithm to read a matrix in normal form
 1. Start
 2. Read the number of rows and columns
 3. Iterate from 0 to number of rows
     3.1 Iterate from 0 to number of columns
         3.1.1 Read the element
         3.1.2 Store the element in the array
-4. End
+4. Stop
 
-Print matrix function
+Algorithm to print a matrix in normal form
 1. Start
 2. Iterate from 0 to number of rows
     2.1 Iterate from 0 to number of columns
         2.1.1 Print the element
     2.2 Print a new line
-3. End
+3. Stop
 
-Convert matrix to tuple function
+Algorithm to convert a matrix to tuple form
 1. Start
 2. Declare and initialize k to 1
 3. Iterate from 0 to number of rows
@@ -34,16 +55,16 @@ Convert matrix to tuple function
             3.1.1.1 Store the row number, column number and element in the tuple array
             3.1.1.2 Increment k
 4. Store the number of rows, number of columns and k in the tuple array
-5. End
+5. Stop
 
-Print tuple function
+Algorithm to print a matrix in tuple form
 1. Start
 2. Store array[0][2] in n
 3. Iterate from 0 to n
     3.1 Print the row number, column number and element
-4. End
+4. Stop
 
-Transpose tuple function
+Algorithm to find the transpose of a matrix in tuple form
 1. Start
 2. Store array1[0][0] in array2[0][1]
 3. Store array1[0][1] in array2[0][0]
@@ -53,9 +74,9 @@ Transpose tuple function
     5.2 Store array1[i][0] in array2[i][1]
     5.3 Store array1[i][2] in array2[i][2]
 6. Sort the array2 using the bubble sort algorithm
-7. End
+7. Stop
 
-Add tuple function
+Algorithm to add two matrices in tuple form
 1. Start
 2. If rows and columns of array1 and array2 are not equal
     2.1 Print "Addition not possible"
@@ -101,28 +122,7 @@ Add tuple function
 7. Store array1[0][0] in array3[0][0]
 8. Store array1[0][1] in array3[0][1]
 9. Store k - 1 in array3[0][2]
-10. End
-
-Main function
-1. Start
-2. Declare two matrices, two tuples, two transposed tuples and one sum tuple
-3. Declare n1, m1 and n2, m2
-4. Read two matrices using the read matrix function
-5. Display a menu
-    5.1 If the user enters 1
-        5.1.1 Display the matrices
-    5.2 Else if the user enters 2
-        5.2.1 Convert the matrices to tuples using the convert matrix to tuple function
-        5.2.2 Display the tuples
-    5.3 Else if the user enters 3
-        5.3.1 Find the transpose of the tuples using the transpose tuple function
-        5.3.2 Display the transposed tuples
-    5.4 Else if the user enters 4
-        5.4.1 Add the tuples using the add tuple function
-        5.4.2 Display the sum tuple
-    5.5 Else if the user enters 5
-        5.5.1 Exit
-6. End
+10. Stop
 */
 
 #include <stdio.h>

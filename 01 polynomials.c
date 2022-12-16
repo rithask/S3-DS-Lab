@@ -8,7 +8,17 @@ the resultant polynomial.
 /*
 ALGORITHM
 
-Read function
+Algorithm for main
+1. Start
+2. Declare n1, n2, n3
+3. Read the first and second polynomial using the read function
+4. Sort the first and second polynomial using the sort function
+5. Add the first and second polynomial using the add function
+6. Print the first polynomial and the second polynomial using the print function
+7. Print the result polynomial using the print function
+8. End
+
+Algorithm for reading polynomial
 1. Start
 2. Read the number of terms in the polynomial
 3. Iterate from 0 to number of terms
@@ -16,7 +26,7 @@ Read function
     3.2 Store the coefficient and exponent in the array
 4. End
 
-Print function
+Algorithm for printing polynomial
 1. Start
 2. Iterate from 0 to number of terms
     2.1 If the coefficient is 0, skip the termt
@@ -24,7 +34,7 @@ Print function
     2.3 Else print coefficient and exponent
 3. End
 
-Sort function
+ALgorithm for sorting polynomial
 1. Start
 2. Iterate from 0 to number of terms
     2.1 Iterate from 0 to number of terms - 1
@@ -32,7 +42,7 @@ Sort function
             2.1.1.1 Swap the coefficients and exponents of the two terms
 3. End
 
-Add function
+Algorithm for adding polynomials
 1. Start
 2. Declare and initialize i, j, k to 0
 3. While i < n1 and j < n2
@@ -52,16 +62,6 @@ Add function
     5.1 Store the coefficient and exponent of the second polynomial in the result array
     5.2 Increment j and k
 6. End
-
-Main function
-1. Start
-2. Declare n1, n2, n3
-3. Read the first and second polynomial using the read function
-4. Sort the first and second polynomial using the sort function
-5. Add the first and second polynomial using the add function
-6. Print the first polynomial and the second polynomial using the print function
-7. Print the result polynomial using the print function
-8. End
 */
 
 #include <stdio.h>

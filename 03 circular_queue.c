@@ -14,47 +14,7 @@ Global variables:
     front: index of the front element
     rear: index of the rear element
 
-is full function
-1. Start
-2. If rear is equal to size - 1 and front is equal to 0 or rear is equal to front - 1, return 1
-3. Else, return 0
-4. Stop
-
-is empty function
-1. Start
-2. If front is equal to -1, return 1
-3. Else, return 0
-4. Stop
-
-enqueue function
-1. Start
-2. If is full function returns 1, display Queue is full
-3. Else
-    3.1 If front is equal to -1, set front = 0
-    3.2 rear = (rear + 1) % size
-    3.3 Read element
-    3.4 Store element in queue[rear]
-4. Stop
-
-dequeue function
-1. Start
-2. If is empty function returns 1, display Queue is empty
-3. Else
-    3.1 If front is equal to rear, set front = rear = -1
-    3.2 Else, front = (front + 1) % size
-4. Stop
-
-print_queue function
-1. Start
-2. If is empty function returns 1, display Queue is empty
-3. Else
-    3.1 Set i to front
-    3.2 Repeat until i is equal to rear
-    3.3 Print the element at i
-    3.4 Increment i by 1
-4. Stop
-
-main function
+Algorithm for main
 1. Start
 2. Read the size of the queue
 3. Display the menu
@@ -70,6 +30,46 @@ main function
     4.5 Else
         4.5.1 Display Invalid choice
 5. Stop
+
+Algorithm to check if the queue is full
+1. Start
+2. If rear is equal to size - 1 and front is equal to 0 or rear is equal to front - 1, return 1
+3. Else, return 0
+4. Stop
+
+Algorithm to check if the queue is empty
+1. Start
+2. If front is equal to -1, return 1
+3. Else, return 0
+4. Stop
+
+Algorithm to enqueue an element to the queue
+1. Start
+2. If is full function returns 1, display Queue is full
+3. Else
+    3.1 If front is equal to -1, set front = 0
+    3.2 rear = (rear + 1) % size
+    3.3 Read element
+    3.4 Store element in queue[rear]
+4. Stop
+
+Algorithm to dequeue an element from the queue
+1. Start
+2. If is empty function returns 1, display Queue is empty
+3. Else
+    3.1 If front is equal to rear, set front = rear = -1
+    3.2 Else, front = (front + 1) % size
+4. Stop
+
+Algorithm to print the queue
+1. Start
+2. If is empty function returns 1, display Queue is empty
+3. Else
+    3.1 Set i to front
+    3.2 Repeat until i is equal to rear
+    3.3 Print the element at i
+    3.4 Increment i by 1
+4. Stop
 */
 
 #include <stdio.h>

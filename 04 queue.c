@@ -13,34 +13,7 @@ Global variables:
     front: index of the front element
     rear: index of the rear element
 
-insert function
-1. Start
-2. If rear is equal to size - 1, display Queue is full
-3. Else
-    3.1 If front is equal to -1, set front = 0
-    3.2 rear = rear + 1
-    3.3 Insert the element at rear
-4. Stop
-
-delete function
-1. Start
-2. If front is equal to -1 or front > rear, display Queue underflow
-3. Else
-    3.1 Print the element at front
-    3.2 front = front + 1
-4. Stop
-
-display function
-1. Start
-2. If front is equal -1, display Queue is empty
-3. Else
-    3.1 Set i to front
-    3.2 Repeat until i is equal to rear
-    3.3 Print the element at i
-    3.4 Increment i by 1
-4. Stop
-
-main function
+Algorithm for main
 1. Start
 2. Read the size of the queue
 3. Display the menu
@@ -57,6 +30,33 @@ main function
     4.4 Else
         4.4.1 Display Invalid choice
 5. Stop
+
+Algorithm for enqueue
+1. Start
+2. If rear is equal to size - 1, display Queue is full
+3. Else
+    3.1 If front is equal to -1, set front = 0
+    3.2 rear = rear + 1
+    3.3 Insert the element at rear
+4. Stop
+
+Algorithm for dequeue
+1. Start
+2. If front is equal to -1 or front > rear, display Queue underflow
+3. Else
+    3.1 Print the element at front
+    3.2 front = front + 1
+4. Stop
+
+Algorithm for display
+1. Start
+2. If front is equal -1, display Queue is empty
+3. Else
+    3.1 Set i to front
+    3.2 Repeat until i is equal to rear
+    3.3 Print the element at i
+    3.4 Increment i by 1
+4. Stop
 */
 
 #include <stdio.h>

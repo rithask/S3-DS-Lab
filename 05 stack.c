@@ -12,33 +12,7 @@ Global variables:
     stack: array to store the stack elements
     top: index of the top element
 
-push function
-1. Start
-2. If top is equal to size - 1, display Stack is full
-3. Else
-    3.1 top = top + 1
-    3.2 Insert the element at top
-4. Stop
-
-pop function
-1. Start
-2. If top is equal to -1, display Stack underflow
-3. Else
-    3.1 Print the element at top
-    3.2 top = top - 1
-4. Stop
-
-display function
-1. Start
-2. If top is equal -1, display Stack is empty
-3. Else
-    3.1 Set i to 0
-    3.2 Repeat until i is equal top
-    3.3 Print the element at i
-    3.4 Increment i by 1
-4. Stop
-
-main function
+Algorithm for main
 1. Start
 2. Read the size of the stack
 3. Display the menu
@@ -55,6 +29,32 @@ main function
     4.4 Else
         4.4.1 Display Invalid choice
 5. Stop
+
+Algorithm for push
+1. Start
+2. If top is equal to size - 1, display Stack is full
+3. Else
+    3.1 top = top + 1
+    3.2 Insert the element at top
+4. Stop
+
+Algorithm for pop
+1. Start
+2. If top is equal to -1, display Stack underflow
+3. Else
+    3.1 Print the element at top
+    3.2 top = top - 1
+4. Stop
+
+Algorithm for display
+1. Start
+2. If top is equal -1, display Stack is empty
+3. Else
+    3.1 Set i to 0
+    3.2 Repeat until i is equal top
+    3.3 Print the element at i
+    3.4 Increment i by 1
+4. Stop
 */
 
 #include <stdio.h>
