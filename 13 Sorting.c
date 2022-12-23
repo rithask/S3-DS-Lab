@@ -220,6 +220,15 @@ void heap_sort(int a[], int n)
     }
 }
 
+void display(int *arrr, int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		printf("%d ", arrr[i]);
+	}
+	printf("\n");
+}
+
 int main()
 {
     int arr[100];
@@ -239,27 +248,39 @@ int main()
 	memcpy(temp3, arr, n * sizeof(int));
 
     quicksort(temp1, 0, n - 1);
-    printf("Quick sort: ");
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d ", temp1[i]);
-    }
-    printf("\n");
-
     merge_sort(temp2, 0, n - 1);
-    printf("Merge sort: ");
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d ", temp2[i]);
-    }
-    printf("\n");
-
     heap_sort(temp3, n);
-    printf("Heap sort: ");
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d ", temp3[i]);
-    }
+
+	int choice;
+	while(1)
+	{
+		printf("\n1. Quick sort\n2. Merge sort\n3. Heap sort\n4. Exit\n");
+		printf("Enter your choice: ");
+		scanf("%d" , &choice);
+		printf("\n");
+
+		switch(choice)
+		{
+			case 1:
+				printf("Quick sort: ");
+				display(temp1, n);
+				break;
+			case 2:
+				printf("Merge sort: ");
+				display(temp2, n);
+				break;
+			case 3:
+				printf("Heap sort: ");
+				display(temp3, n);
+				break;
+			case 4:
+				printf("Exiting...\n");
+				exit(0);
+			default:
+				printf("Invalid choice\n");
+		}
+	}
+
     printf("\n");
     return 0;
 }
