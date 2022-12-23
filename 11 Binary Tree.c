@@ -6,25 +6,21 @@ ALGORITHM
 1. Start
 2. Read the expression
 3. Create a root node with the first character of the expression
-4. Create a temporary node and assign it to the root node
-5. Traverse the expression from the second character
-6. If the character is an operator, create a new node with the character and assign it to the left child of the temporary node
-7. If the character is an operand, create a new node with the character and assign it to the right child of the temporary node
-8. Repeat steps 5 to 7 until the end of the expression
-9. Display the menu
-10. Read the choice
-11. If the choice is inorder traversal
-	11.1 call the inorder function
-12. Else if the choice is preorder traversal
-	12.1 call the preorder function
-13. Else if the choice is postorder traversal
-	13.1 call the postorder function
-14. Else if the choice is exit
-	14.1 exit the program
-15. Else
-	15.1 display invalid choice
-16. Repeat steps 9 to 15 until the choice is exit
-17. Stop
+4. Build the expression tree
+5. Display a menu
+6. Read the choice
+7. If the choice is inorder
+	7.1 Display the inorder traversal
+8. Else if the choice is preorder
+	8.1 Display the preorder traversal
+9. Else if the choice is postorder
+	9.1 Display the postorder traversal
+10. Else if the choice is exit
+	10.1 Exit the program
+11. Else
+	11.1 Display "Invalid choice"
+12. Repeat from step 5
+13. Stop
 
 Algorithm for creating a node
 1. Start
@@ -33,6 +29,24 @@ Algorithm for creating a node
 4. Set the left child of the new node to NULL
 5. Set the right child of the new node to NULL
 6. Return the new node
+
+Algorithm for building the expression tree
+1. Start
+2. Create a stack
+3. Set the top of the stack to -1
+4. For each character in the expression
+	4.1 If the character is an operand
+		4.1.1 Create a new node with the character as the data
+		4.1.2 Push the new node onto the stack
+	4.2 Else
+		4.2.1 Create a new node with the character as the data
+		4.2.2 Set the right child of the new node to the top of the stack
+		4.2.3 Pop the top of the stack
+		4.2.4 Set the left child of the new node to the top of the stack
+		4.2.5 Pop the top of the stack
+		4.2.6 Push the new node onto the stack
+5. Return the top of the stack
+6. Stop
 
 Algorithm for inorder traversal
 1. Start
@@ -62,10 +76,10 @@ Algorithm for postorder traversal
 6. Stop
 */
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 typedef struct node
 {
@@ -78,7 +92,7 @@ node *create(char data);
 void inorder(node *root);
 void preorder(node *root);
 void postorder(node *root);
-
+node* build_expression_tree(char postfix[]);
 
 int main()
 {
@@ -86,21 +100,8 @@ int main()
 	char exp[20];
 	printf("Enter the expression: ");
 	scanf("%s", exp);
-	node *root = create(exp[0]);
-	node *temp = root;
-	for (int i = 1; i < strlen(exp); i++)
-	{
-		if (exp[i] == '+' || exp[i] == '-' || exp[i] == '*' || exp[i] == '/')
-		{
-			temp->left = create(exp[i]);
-			temp = temp->left;
-		}
-		else
-		{
-			temp->right = create(exp[i]);
-			temp = temp->right;
-		}
-	}
+	node *root = build_expression_tree(exp);
+
 	while(1)
 	{
 		printf("1. Inorder traversal\n2. Preorder traversal\n3. Postorder traversal\n4. Exit\n");
@@ -168,4 +169,32 @@ void postorder(node *root)
 	postorder(root->left);
 	postorder(root->right);
 	printf("%c ", root->data);
+}
+
+node* build_expression_tree(char postfix[])
+{
+	node *stack[100];
+	int top = -1;
+
+	for (int i = 0; i < strlen(postfix); i++)
+	{
+    	// If the character is an operand, create a new tree node and push it onto the stack
+    	if (isalnum(postfix[i]))
+		{
+			stack[++top] = create(postfix[i]);
+    	}
+		else 
+		{
+			// If the character is an operator, pop two operands from the stack, create a new tree node
+			// with the operator as its data, and set the left and right children to the operands.
+			// Then push the new tree node back onto the stack.
+			node *node = create(postfix[i]);
+			node->right = stack[top--];
+			node->left = stack[top--];
+			stack[++top] = node;
+		}
+    }
+
+	// The final node on the stack is the root of the expression tree
+	return stack[top];
 }
